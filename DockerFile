@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build Docker Image') {
+      steps {
+        sh 'docker build -t myimage:latest .'
+      }
+    }
+    stage('Push to DockerHub') {
+      steps {
+        sh 'docker login -u <MSD967> -p <Msd@00112233>'
+        sh 'docker push myimage:latest'
+      }
+    }
+  }
+
+}
