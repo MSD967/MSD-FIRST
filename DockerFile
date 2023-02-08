@@ -3,13 +3,12 @@ pipeline {
   stages {
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t myimage:latest .'
-      }
+        sh 'docker build -t msd967/msd-first.}
     }
     stage('Push to DockerHub') {
       steps {
         sh 'docker login -u <MSD967> -p <Msd@00112233>'
-        sh 'docker push myimage:latest'
+        sh 'docker push msd967/msd-first'
       }
     }
   }
