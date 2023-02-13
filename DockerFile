@@ -1,16 +1,19 @@
 pipeline {
-  agent any
-  stages {
-    stage('Build Docker Image') {
-      steps {
-        sh 'docker build -t msd967/msd-first.}
-    }
-    stage('Push to DockerHub') {
-      steps {
-        sh 'docker login -u <MSD967> -p <Msd@00112233>'
-        sh 'docker push msd967/msd-first'
-      }
-    }
-  }
+    agent any
 
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t alpine.'
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker login --username=Msd967 --password=Msd@00112233'
+                sh 'docker tag myimage Msd967/alpine'
+                sh 'docker push Msd967/alpine'
+            }
+        }
+    }
 }
