@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t myimage .'
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker login --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD'
+                sh 'docker tag myimage $DOCKER_HUB_USERNAME/myimage'
+                sh 'docker push $DOCKER_HUB_USERNAME/myimage'
+            }
+        }
+
+        stage('Start Docker Container') {
+            steps {
+                sh 'docker run -p 80:80 --name mycontainer myimage'
+            }
+        }
+
+        stage('Interact with Container') {
+            steps {
+                sh 'curl localhost:80'
+            }
+        }
+    }
+}
