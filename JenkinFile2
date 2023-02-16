@@ -10,7 +10,7 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login --username=msd967 --password=Msd@#00112233'
+                sh 'docker login --username=Msd967 --password=Msd@#00112233'
                 sh 'docker tag myimage msd967/myimage'
                 sh 'docker push msd967/myimage'
             }
