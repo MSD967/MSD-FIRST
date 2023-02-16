@@ -10,9 +10,9 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker login --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD'
-                sh 'docker tag myimage $DOCKER_HUB_USERNAME/myimage'
-                sh 'docker push $DOCKER_HUB_USERNAME/myimage'
+                sh 'docker login --username=msd967 --password=Msd@#00112233'
+                sh 'docker tag myimage msd967/myimage'
+                sh 'docker push msd967/myimage'
             }
         }
 
